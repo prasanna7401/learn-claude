@@ -1,16 +1,16 @@
+# Claude Code Basics
 
-## Claude Code Basics
-
-This project was built using Claude Code. Below are the key tips and features used during development.
+Key tips and features for working with Claude Code.
 
 ---
 
-### Setup
+## Setup
 
-- Run `/init` in your project to analyze the codebase and auto-generate a `CLAUDE.md` file (works best in CLI mode)
-- Press **Enter** to allow a single operation, or **Shift+Tab** to allow all pending operations
+Run `/init` to analyze your codebase and auto-generate a `CLAUDE.md` file _(works best in CLI mode)_.
 
-#### CLAUDE.md File Locations
+When Claude requests a tool, press **Enter** to allow a single operation or **Shift+Tab** to allow all pending operations.
+
+### CLAUDE.md File Locations
 
 | File | Scope |
 |---|---|
@@ -18,11 +18,13 @@ This project was built using Claude Code. Below are the key tips and features us
 | `CLAUDE.local.md` | Personal/local — not committed to version control |
 | `~/.claude/CLAUDE.md` | Global — applies to all projects on your machine |
 
-> Keep CLAUDE.md under 200 lines — the entire file is loaded into context.
+> **Tip:** Keep `CLAUDE.md` under 200 lines — the entire file is loaded into context on every request.
 
 You can reference other files inside `.md` files using `@<path>`.
 
-#### Instruction Hierarchy
+### Instruction Hierarchy
+
+Instructions are applied from broadest to most specific:
 
 ```
 Global / Enterprise (managed-settings.json)
@@ -33,64 +35,69 @@ Global / Enterprise (managed-settings.json)
 
 ---
 
-### Working with Claude
+## Working with Claude
 
-#### Modes
+### Modes
 
 | Mode | How to Trigger |
 |---|---|
-| Planning mode | Press **Shift+Tab** twice — broad codebase understanding before making changes |
-| Thinking mode | Use phrases: `Think` < `Think More` < `Think a lot` < `Think longer` < `Ultrathink` |
+| **Planning mode** | Press **Shift+Tab** twice — Claude builds broad codebase understanding before making changes |
+| **Thinking mode** | Use phrases in order of depth: `Think` → `Think More` → `Think a lot` → `Think longer` → `Ultrathink` |
 
-#### Keyboard Shortcuts
+### Keyboard Shortcuts
 
 | Shortcut | Action |
 |---|---|
-| `Escape` | Interrupt Claude to correct context |
-| `Escape + Escape` | Revert to previous context |
+| `Escape` | Interrupt Claude to correct its context |
+| `Escape` `Escape` | Revert to previous context |
 
 ---
 
-### Commands
+## Commands
 
-#### Built-in Slash Commands
+### Built-in Slash Commands
 
 | Command | Description |
 |---|---|
 | `/init` | Analyze codebase and generate `CLAUDE.md` |
 | `/clear` | Clear full context and start fresh |
-| `/compact` | Summarize and compress context to keep the terminal clean |
+| `/compact` | Summarize and compress context to keep things clean |
 
-#### Custom Slash Commands
+### Custom Slash Commands
 
 1. Create a file inside `.claude/commands/` — the filename becomes the command
    (e.g., `terraform-test.md` → `/terraform-test`)
 2. Add your instructions (setup steps, rules, etc.)
 3. Restart Claude Code
-4. Use `$ARGUMENTS` in your file to accept arguments at runtime
+4. Use `$ARGUMENTS` in your file to accept runtime arguments
 
-Commands only run when you explicitly type them.
-
----
-
-### Memory & Context
-
-Use `#` at the start of a message to set persistent memory for a project (writes to `CLAUDE.md`).
+> Commands only run when you explicitly type them.
 
 ---
 
-### Extensions & Integrations
+## Memory & Context
 
-#### MCP Servers
+Prefix a message with `#` to write persistent memory to `CLAUDE.md`:
 
-MCP Servers simplify integration with external applications (databases, browsers, APIs).
+```
+# Always use TypeScript strict mode
+```
 
-**Add Playwright MCP** (lets Claude interact with a browser):
+---
+
+## Extensions & Integrations
+
+### MCP Servers
+
+MCP Servers connect Claude to external applications like databases, browsers, and APIs.
+
+**Example — add Playwright** (lets Claude interact with a browser):
+
 ```bash
 claude mcp add playwright npx @playwright/mcp@latest
 ```
 
-Example prompt: *"Can you open this app at localhost:3000 and verify it in the browser?"*
+Then prompt Claude with something like:
+> *"Can you open this app at localhost:3000 and verify it in the browser?"*
 
-Control Claude's MCP permissions in `.claude/settings.local.json` by adding entries to `allow[]`
-(e.g., `mcp__playwright`).
+To control which MCP tools Claude can use, add entries to `allow[]` in `.claude/settings.local.json` (e.g., `mcp__playwright`).

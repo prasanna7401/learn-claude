@@ -2,17 +2,47 @@
 
 A hands-on learning repository for [Claude Code](https://claude.ai/code) features. Each directory covers a distinct concept with working examples and explanations.
 
-## Directories
+## Modules
+
+| Module | What you'll learn |
+|--------|-------------------|
+| [`claude_code_basics/`](./claude_code_basics/) | Core concepts |
+| [`hooks/`](./hooks/) | Automating tool call behavior |
+| [`agent_skills/`](./agent_skills/) | Skills and sub-agents |
+
+---
 
 ### [`claude_code_basics/`](./claude_code_basics/)
-- Core Claude Code concepts: `CLAUDE.md` file scopes and structure, built-in and custom slash commands, keyboard shortcuts, planning and thinking modes, MCP server integration, and persistent memory.
-- Includes a full Next.js app (UIGen — an AI-powered React component generator) built with Claude Code as a practical reference.
+
+Core Claude Code concepts:
+
+- `CLAUDE.md` file scopes and structure
+- Built-in and custom slash commands
+- Keyboard shortcuts
+- Planning and thinking modes
+- MCP server integration
+- Persistent memory
+
+**Practice project:** UIGen — a full Next.js app (AI-powered React component generator) built with Claude Code.
+
+---
 
 ### [`hooks/`](./hooks/)
-- Claude Code Hooks — running custom scripts before (`PreToolUse`) or after (`PostToolUse`) any tool call.
-- Covers blocking tool calls, logging, auto-formatting, configuration via `settings.json`, and security best practices. 
-- Uses a TypeScript e-commerce database project as the practice codebase.
+
+Claude Code Hooks — running custom scripts before (`PreToolUse`) or after (`PostToolUse`) any tool call.
+
+- Blocking tool calls
+- Logging and auto-formatting
+- Configuration via `settings.json`
+- Security best practices
+
+**Practice project:** TypeScript e-commerce database.
+
+---
 
 ### [`agent_skills/`](./agent_skills/)
-- Claude Code Skills and Sub-agents. Skills are reusable `SKILL.md` instruction sets loaded on demand.
-- Sub-agents are isolated Claude instances used to parallelize work or encapsulate specialized workflows like testing or code review.
+
+Claude Code Skills and Sub-agents.
+
+- **Skills** — reusable `SKILL.md` instruction sets loaded on demand
+- **Sub-agents** — isolated Claude instances for parallelizing work or encapsulating specialized workflows (e.g. testing, code review)
