@@ -8,7 +8,8 @@ A hands-on learning repository for [Claude Code](https://claude.ai/code) feature
 |--------|-------------------|
 | [`claude_code_basics/`](./claude_code_basics/) | Core concepts |
 | [`hooks/`](./hooks/) | Automating tool call behavior |
-| [`agent_skills/`](./agent_skills/) | Skills and sub-agents |
+| [`skills/`](./skills/) | Reusable on-demand instruction sets |
+| [`sub_agents/`](./sub_agents/) | Isolated specialized Claude instances |
 
 ---
 
@@ -40,9 +41,12 @@ Claude Code Hooks — running custom scripts before (`PreToolUse`) or after (`Po
 
 ---
 
-### [`agent_skills/`](./agent_skills/)
+### [`skills/`](./skills/)
 
-Claude Code Skills and Sub-agents.
+Claude Code Skills — reusable `SKILL.md` instruction sets loaded on demand for specific tasks (e.g., PR review, commit formatting, doc guidelines).
 
-- **Skills** — reusable `SKILL.md` instruction sets loaded on demand
-- **Sub-agents** — isolated Claude instances for parallelizing work or encapsulating specialized workflows (e.g. testing, code review)
+---
+
+### [`sub_agents/`](./sub_agents/)
+
+Claude Code Sub-agents — isolated Claude instances for parallelizing work or encapsulating specialized workflows (e.g., testing, deployment, code review).
